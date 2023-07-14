@@ -19,7 +19,7 @@ public class Controller {
 
     @GetMapping
     public String runTheApi() {
-        return "I am online, and I am deployed with ci/cd -NOW WITH SWAGGER!!";
+        return "hello yaml!";
     }
 
     @GetMapping(path = "/users")
