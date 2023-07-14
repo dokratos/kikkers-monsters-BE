@@ -1,0 +1,29 @@
+debug: true
+spring:
+#  sql:
+#    init:
+  #      platform: postgresql
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:sqlserver://kikkers.database.windows.net:1433;databaseName=kikkersDB
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    javax.persistence.jdbc.driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    org.hibernate.dialect.Dialect: org.hibernate.dialect.SQLServer2012Dialect
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
