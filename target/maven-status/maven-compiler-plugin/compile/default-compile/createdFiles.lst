@@ -1,2 +1,7 @@
 Mykikker/kikkers/monsters/controller/Controller.class
+Mykikker/kikkers/monsters/user/UserService.class
+Mykikker/kikkers/monsters/user/UserRepository.class
 Mykikker/kikkers/monsters/Application.class
+Mykikker/kikkers/monsters/WebConfiguration.class
+Mykikker/kikkers/monsters/user/JpaUserRepository.class
+Mykikker/kikkers/monsters/user/Player.class
