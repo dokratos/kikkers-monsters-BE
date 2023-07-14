@@ -20,7 +20,9 @@ spring:
     hibernate:
       ddl-auto: create-drop
     defer-datasource-initialization: true
-
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 logging:
   level:
     org:
