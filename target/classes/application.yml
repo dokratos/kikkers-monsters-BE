@@ -1,4 +1,6 @@
 debug: true
+sources:
+  unsplash-access: ${UNSPLASH}
 spring:
 #  sql:
 #    init:

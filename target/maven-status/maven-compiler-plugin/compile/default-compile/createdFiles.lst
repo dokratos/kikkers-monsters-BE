@@ -1,7 +1,11 @@
 Mykikker/kikkers/monsters/controller/Controller.class
+Mykikker/kikkers/monsters/unsplash/Result.class
 Mykikker/kikkers/monsters/user/UserService.class
+Mykikker/kikkers/monsters/unsplash/ImageFetcher.class
 Mykikker/kikkers/monsters/user/UserRepository.class
 Mykikker/kikkers/monsters/Application.class
+Mykikker/kikkers/monsters/unsplash/RootDto.class
 Mykikker/kikkers/monsters/WebConfiguration.class
 Mykikker/kikkers/monsters/user/JpaUserRepository.class
+Mykikker/kikkers/monsters/unsplash/Urls.class
 Mykikker/kikkers/monsters/user/Player.class
