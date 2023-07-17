@@ -1,6 +1,8 @@
 package Mykikker.kikkers.monsters.controller;
 
 import Mykikker.kikkers.monsters.unsplash.ImageFetcher;
+import Mykikker.kikkers.monsters.unsplash.MemoryCardCreate;
+import Mykikker.kikkers.monsters.unsplash.ParamsDto;
 import Mykikker.kikkers.monsters.user.Player;
 import Mykikker.kikkers.monsters.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,10 @@ public class Controller {
     }
 
     @GetMapping("/images")
-    public ResponseEntity<List<String>> listImages(@RequestBody String query) {
-        String[] urls = unsplash.fetchImage(query);
-        return ResponseEntity.ok().body(Arrays.stream(urls).toList());
+    public ResponseEntity<List<String>> listImages(@RequestParam String query, @RequestParam int amount) {
+        System.out.println(query + "PARAMSSSSSS");
+        String[] urls = unsplash.fetchImage(query, amount);
+        String[] cards = MemoryCardCreate.images(urls);
+        return ResponseEntity.ok().body(Arrays.stream(cards).toList());
     }
 }

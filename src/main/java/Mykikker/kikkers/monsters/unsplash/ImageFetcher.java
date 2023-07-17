@@ -22,10 +22,10 @@ public class ImageFetcher {
 
 //    https://api.unsplash.com/search/photos?query=office&client_id=
 //    root.results.urls.raw
-    public String[] fetchImage(String query) {
+    public String[] fetchImage(String query, int numberOfCards) {
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create("https://api.unsplash.com/search/photos?per_page=5&query=" + query + "&client_id=" + unsplashKey))
+                .uri(URI.create("https://api.unsplash.com/search/photos?per_page=" + numberOfCards + "&query=" + query + "&client_id=" + unsplashKey))
                 .build();
 
         CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
@@ -37,7 +37,7 @@ public class ImageFetcher {
             RootDto unsplashResponse = mapper.readValue(body, RootDto.class);
             String[] imageList = unsplashResponse.getResult()
                     .stream()
-                    .map(result -> result.getUrls().getRaw())
+                    .map(result -> result.getUrls().getSmall())
                     .toArray(String[]::new);
             return imageList;
         } catch (ExecutionException | InterruptedException | JsonProcessingException ex) {
