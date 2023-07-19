@@ -12,17 +12,18 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private String userName;
 
-    public Double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(Double score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
-    private Double score;
+    private int score;
 
     public Player() {
 
@@ -44,7 +45,8 @@ public class Player {
         this.userName = userName;
     }
 
-    public Player(@NotNull String name) {
+    public Player(String name, int score) {
+        this.score = score;
         this.userName = name;
     }
 }

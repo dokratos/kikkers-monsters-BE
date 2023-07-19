@@ -10,8 +10,6 @@ public class MemoryCardCreate {
         gameCards.addAll(Arrays.stream(cards).toList());
         gameCards.addAll(Arrays.stream(cards).toList());
         Collections.shuffle(gameCards);
-
         return gameCards.toArray(String[]::new);
      }
-
 }

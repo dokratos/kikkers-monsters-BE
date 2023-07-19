@@ -12,8 +12,8 @@ public class UserService {
         this.repo = repo;
     }
 
-    public Player createUser(String name) {
-        Player newUser = new Player(name);
+    public Player createUser(PlayerDTO player) {
+        Player newUser = new Player(player.name(), player.score());
         return repo.createUser(newUser);
     }
 
