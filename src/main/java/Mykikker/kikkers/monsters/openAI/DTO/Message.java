@@ -1,5 +1,6 @@
 package Mykikker.kikkers.monsters.openAI.DTO;
 
+
 public class Message {
     private String role;
     private String content;
@@ -23,5 +24,8 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Message() {
     }
 }

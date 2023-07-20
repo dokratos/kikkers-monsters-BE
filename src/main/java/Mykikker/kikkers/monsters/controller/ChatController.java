@@ -1,7 +1,9 @@
 package Mykikker.kikkers.monsters.controller;
 
-import Mykikker.kikkers.monsters.openAI.DTO.ChatRequest;
+import Mykikker.kikkers.monsters.openAI.ChatService;
 import Mykikker.kikkers.monsters.openAI.DTO.ChatResponse;
+import Mykikker.kikkers.monsters.openAI.DTO.Message;
+import Mykikker.kikkers.monsters.openAI.DTO.RequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,16 +19,16 @@ public class ChatController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${sources.openai.model}")
-    private String model;
+    @Autowired
+    ChatService service;
 
     @Value("${sources.openai.url}")
     private String apiUrl;
 
     @GetMapping("/chat")
-    public String chat(@RequestParam String prompt) {
+    public String chat(@RequestParam String theme) {
         // create a request
-        ChatRequest request = new ChatRequest(model, prompt);
+        RequestDTO request = service.createRequest(theme);
 
         // call the API
         ChatResponse response = restTemplate.postForObject(apiUrl, request, ChatResponse.class);
