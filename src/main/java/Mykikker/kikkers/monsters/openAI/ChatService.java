@@ -13,10 +13,10 @@ public class ChatService {
     @Value("${sources.openai.model}")
     private String model;
 
-    public RequestDTO createRequest(String theme) {
+    public RequestDTO createRequest(String theme, String game) {
         return new RequestDTO(model,
                 new ArrayList<>(List.of(
-                        new Message("user", "Congratulate me for winning the memory card game with theme " + theme))),
+                        new Message("user", "Congratulate me for winning the " + game + " game with theme " + theme))),
                 1,
                 0.5);
     }

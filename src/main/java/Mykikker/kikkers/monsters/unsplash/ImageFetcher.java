@@ -20,8 +20,6 @@ public class ImageFetcher {
 
     HttpClient client = HttpClient.newBuilder().build();
 
-//    https://api.unsplash.com/search/photos?query=office&client_id=
-//    root.results.urls.raw
     public String[] fetchImage(String query, int numberOfCards) {
         HttpRequest request = HttpRequest
                 .newBuilder()

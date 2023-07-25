@@ -26,9 +26,9 @@ public class ChatController {
     private String apiUrl;
 
     @GetMapping("/chat")
-    public String chat(@RequestParam String theme) {
+    public String chat(@RequestParam String theme, @RequestParam String game) {
         // create a request
-        RequestDTO request = service.createRequest(theme);
+        RequestDTO request = service.createRequest(theme, game);
 
         // call the API
         ChatResponse response = restTemplate.postForObject(apiUrl, request, ChatResponse.class);
