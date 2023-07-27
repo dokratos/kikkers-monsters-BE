@@ -1,6 +1,8 @@
 package Mykikker.kikkers.monsters.controller;
 
 import Mykikker.kikkers.monsters.trivia.DTO.ResponseRoot;
+import Mykikker.kikkers.monsters.trivia.DTO.TriviaQuestionDTO;
+import Mykikker.kikkers.monsters.trivia.TriviaShuffle;
 import Mykikker.kikkers.monsters.unsplash.ImageFetcher;
 import Mykikker.kikkers.monsters.unsplash.MemoryCardCreate;
 import Mykikker.kikkers.monsters.user.Player;
@@ -30,6 +32,9 @@ public class Controller {
     ImageFetcher unsplash;
     @Resource
     private WebClient webClient;
+
+    @Autowired
+    TriviaShuffle triviaService;
 
     public Controller(@Autowired UserService userService) {
         this.userService = userService;
@@ -65,14 +70,16 @@ public class Controller {
     }
 
     @GetMapping("/trivia")
-    public Mono<ResponseRoot> getCustomer(@RequestParam @Valid String amount,
-                                          @RequestParam @Valid String category,
-                                          @RequestParam @Valid String difficulty) {
+    public List<TriviaQuestionDTO> getCustomer(@RequestParam @Valid String amount,
+                                               @RequestParam @Valid String category,
+                                               @RequestParam @Valid String difficulty) {
 
-        return webClient.get()
+        Mono<ResponseRoot>  response = webClient.get()
                 .uri("?amount={amount}&category={category}&difficulty={difficulty}", amount, category, difficulty)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
                 .bodyToMono(ResponseRoot.class);
+
+        return triviaService.createTrivia(response);
     }
 }
