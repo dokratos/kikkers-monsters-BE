@@ -13,11 +13,9 @@ spring:
     ansi:
       enabled: always
   datasource:
-    url: jdbc:sqlserver://kikkers.database.windows.net:1433;databaseName=kikkersDB
+    url: jdbc:postgresql://mouse.db.elephantsql.com:5432/kjkeghdw
     username: ${DB_USER}
     password: ${DB_PASSWORD}
-    javax.persistence.jdbc.driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    org.hibernate.dialect.Dialect: org.hibernate.dialect.SQLServer2012Dialect
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
